@@ -2,11 +2,12 @@ import os
 import json
 from PyQt5.QtGui import QColor, QBrush
 from PyQt5.QtWidgets import QTreeWidgetItem
+from setting import data_link
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 
 class data:
-    link = "D:/New_era/my _data/Data_base_AiMED_project_v1/Signal"
+    link = data_link
     data_store_link = parent_dir+"/data"
 
     def __init__(self,GUI = None,data_buffer = None,main_graph = None):

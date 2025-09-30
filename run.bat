@@ -7,6 +7,3 @@ call myenv\Scripts\activate.bat
 
 REM Run your Python script inside the venv
 python main.py
-
-REM Pause so you can see any errors before window closes
-pause 
