@@ -2,12 +2,13 @@ import os
 import json
 from PyQt5.QtGui import QColor, QBrush
 from PyQt5.QtWidgets import QTreeWidgetItem
-from setting import data_link
+from .setting import data_link
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 
 class data:
-    link = data_link
+    path = data_link()
+    link = path.path
     data_store_link = parent_dir+"/data"
 
     def __init__(self,GUI = None,data_buffer = None,main_graph = None):
@@ -49,9 +50,9 @@ class data:
             folder = os.listdir(self.link)
             for item in folder:
                 try:
-                    file_list = os.listdir(link+'//'+item+'//ECG_Label')
+                    file_list = os.listdir(link+'/'+item+'/ECG_Label')
                     for sub_file in file_list:
-                        with open(link+'//'+item+'//ECG_Label//'+sub_file, 'r') as file:
+                        with open(link+'/'+item+'/ECG_Label/'+sub_file, 'r') as file:
                             subitem = QTreeWidgetItem(self.GUI.data_list,[sub_file])
                             data= json.load(file)
                             count_file = count_file+1
@@ -66,7 +67,9 @@ class data:
                                 count_adjusted_file = count_adjusted_file + 1
 
                 except Exception as e:
-                    self.GUI.message_box(e)
+                    # self.GUI.message_box(e)
+                    print(e)
+                    pass
 
         first_item = self.GUI.data_list.topLevelItem(0)
         if first_item:

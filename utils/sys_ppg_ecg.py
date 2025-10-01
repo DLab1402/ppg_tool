@@ -51,6 +51,7 @@ class syn:
     def ecg_peak(self,ecg):
         _, results = nk.ecg_peaks(ecg, sampling_rate = self.ppg_fre)
         ecg_peaks = np.zeros(len(ecg))
+        # print(results["ECG_R_Peaks"])
         ecg_peaks[results["ECG_R_Peaks"]] = 1
         return ecg_peaks
     
