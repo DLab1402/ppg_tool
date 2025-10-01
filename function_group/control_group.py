@@ -13,6 +13,8 @@ from PyQt5.uic import loadUi
 import xml.etree.ElementTree as ET
 from PyQt5.QtGui import QColor, QBrush
 from PyQt5.QtWidgets import QApplication,QTreeWidgetItem,QDialog, QVBoxLayout, QButtonGroup, QRadioButton, QFileDialog
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
 
 class control:
     __folder_path = None
@@ -37,7 +39,7 @@ class control:
         if self.__folder_path != None:
             name = self.__folder_path +"//"+self.GUI.data_list.currentItem().text(0)
         else:
-            name = "G:/My Drive/labeled_processing/data/"+self.GUI.data_list.currentItem().text(0)
+            name = parent_dir+"/data/"+self.GUI.data_list.currentItem().text(0)
         self.data_buffer.save_data(name,self.GUI.valid.isChecked())
         if self.GUI.valid.isChecked() == True:
             color = "green"
