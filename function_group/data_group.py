@@ -7,9 +7,8 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 
 class data:
-    path = data_link()
-    link = path.path
-    data_store_link = parent_dir+"/data"
+    link = data_link().path
+    data_store_link = data_link().save_path
 
     def __init__(self,GUI = None,data_buffer = None,main_graph = None):
         self.GUI = GUI

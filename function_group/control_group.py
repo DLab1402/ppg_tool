@@ -1,18 +1,9 @@
 #library import
 import os
-import sys
-import json
 import numpy as np
-import pandas as pd
-import pyqtgraph as pg
-import neurokit2 as nk
-import openpyxl
-
-from PyQt5 import QtWidgets
-from PyQt5.uic import loadUi
-import xml.etree.ElementTree as ET
+from .setting import data_link
 from PyQt5.QtGui import QColor, QBrush
-from PyQt5.QtWidgets import QApplication,QTreeWidgetItem,QDialog, QVBoxLayout, QButtonGroup, QRadioButton, QFileDialog
+from PyQt5.QtWidgets import QFileDialog
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 
@@ -39,7 +30,7 @@ class control:
         if self.__folder_path != None:
             name = self.__folder_path +"//"+self.GUI.data_list.currentItem().text(0)
         else:
-            name = parent_dir+"/data/"+self.GUI.data_list.currentItem().text(0)
+            name = data_link().save_path+self.GUI.data_list.currentItem().text(0)
         self.data_buffer.save_data(name,self.GUI.valid.isChecked())
         if self.GUI.valid.isChecked() == True:
             color = "green"
