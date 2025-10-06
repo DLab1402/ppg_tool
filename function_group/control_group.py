@@ -30,7 +30,7 @@ class control:
         if self.__folder_path != None:
             name = self.__folder_path +"//"+self.GUI.data_list.currentItem().text(0)
         else:
-            name = data_link().save_path+self.GUI.data_list.currentItem().text(0)
+            name = data_link().save_path+"/"+self.GUI.data_list.currentItem().text(0)
         self.data_buffer.save_data(name,self.GUI.valid.isChecked())
         if self.GUI.valid.isChecked() == True:
             color = "green"
